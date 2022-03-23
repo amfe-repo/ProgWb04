@@ -48,22 +48,22 @@ const ContainerCard = () =>
                     <div className="tab-pane active" id="contacts">
                         <div className="row justify-content-center">
                             {
-                                userData.map(res=>
+                                userData ? userData.map(res=>
                                 {
                                     counter = counter + 1;
                                     return <Card data={res} key={counter}></Card>;
-                                })
+                                }): "Loading..."
                             }
                         </div>
                      </div>
                     <div className="tab-pane" id="inserted">
                         <div className="row justify-content-center">
                             {
-                                JSON.parse(localStorage.getItem("data")).map(res=>
+                                localStorage.getItem("data") != null? JSON.parse(localStorage.getItem("data")).map(res=>
                                     {
                                         counterInserted = counterInserted + 1;
                                         return <Card data={res} key={counterInserted}></Card>
-                                    })
+                                    }): "Loading"
                             }
                         </div>
                     </div>
