@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as ApiConsume from '../../Services/Axios/ApiConsume';
+import { existData, getData } from '../../Services/LocalStorage/LocalSave';
 
 import Card from './CardComponent';
 
@@ -59,7 +60,7 @@ const ContainerCard = () =>
                     <div className="tab-pane" id="inserted">
                         <div className="row justify-content-center">
                             {
-                                localStorage.getItem("data") != null? JSON.parse(localStorage.getItem("data")).map(res=>
+                                existData()? getData().map(res=>
                                     {
                                         counterInserted = counterInserted + 1;
                                         return <Card data={res} key={counterInserted}></Card>

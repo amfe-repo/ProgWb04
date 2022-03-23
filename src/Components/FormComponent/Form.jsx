@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
 import * as ApiConsume from '../../Services/Axios/ApiConsume';
+import { saveLocalInfo } from '../../Services/LocalStorage/LocalSave';
+
 import './Form.css';
 
 const Form = () =>
@@ -20,16 +22,10 @@ const Form = () =>
         };
 
         let info = await ApiConsume.postData(data);
+        saveLocalInfo(info);
 
-        let arr = [];
-
-        if(localStorage.getItem("data") != null)
-            arr = JSON.parse(localStorage.getItem("data"));
-
-        arr.push(info);
-        localStorage.setItem("data", JSON.stringify(arr));
     }
-    
+
     return (
         <form className="row" formAction="" formMethod="get">
             <h2 className="text-center text-primary">Contact Manager</h2>
