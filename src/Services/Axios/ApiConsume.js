@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = "/api/agenda.php";
+const url = "http://www.raydelto.org/agenda.php";
 
 const getData = async function()
 {
